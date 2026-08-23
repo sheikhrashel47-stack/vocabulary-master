@@ -1,0 +1,8 @@
+- [x] Phase‑1 app shell, route map ও IndexedDB data model তৈরি করা।
+- [x] Dashboard/Bank/History/Profile screen ও locked Practice placeholder তৈরি করা।
+- [x] Vocabulary search, A–Z navigation ও word-detail structure implement করা।
+- [x] Responsive, empty-state ও tool-lock rules যাচাই করা।
+- [x] Final visual review, checkpoint ও delivery দেওয়া。
+- [ ] GitHub Pages-compatible static build ও asset paths যাচাই করা।
+- [ ] Vocabulary Master-এর private GitHub repository ও Pages workflow তৈরি করা।
+- [ ] GitHub Pages deployment এবং live URL যাচাই করা।
