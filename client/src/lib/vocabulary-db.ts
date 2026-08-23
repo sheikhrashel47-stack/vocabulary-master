@@ -86,6 +86,15 @@ export async function toggleWordFavorite(id: string): Promise<boolean> {
   return transaction(WORDS_STORE, "readwrite", async (tx) => new Promise<boolean>((resolve, reject) => { const store = tx.objectStore(WORDS_STORE); const request = store.get(id); request.onerror = () => reject(request.error ?? new Error("Could not read this word.")); request.onsuccess = () => { const word = request.result as VocabularyWord | undefined; if (!word) return reject(new Error("Word not found.")); const favorite = !Boolean(word.favorite); store.put({ ...normalizeStoredWord(word), favorite, updatedAt: new Date().toISOString() }); resolve(favorite); }; tx.onerror = () => reject(tx.error ?? new Error("Could not save favorite.")); }));
 }
 
+export async function removeSampleVocabulary(): Promise<number> {
+  return transaction(WORDS_STORE, "readwrite", async (tx) => new Promise<number>((resolve, reject) => {
+    const store = tx.objectStore(WORDS_STORE); let removed = 0; const request = store.openCursor();
+    request.onerror = () => reject(request.error ?? new Error("Could not remove demo vocabulary."));
+    request.onsuccess = () => { const cursor = request.result; if (!cursor) return; const word = cursor.value as VocabularyWord; if (word.source === "sample") { cursor.delete(); removed += 1; } cursor.continue(); };
+    tx.oncomplete = () => resolve(removed); tx.onerror = () => reject(tx.error ?? new Error("Could not remove demo vocabulary."));
+  })).then(async (removed) => { await rebuildDashboardStats(); return removed; });
+}
+
 export async function getDashboardStats(): Promise<LibraryStats> {
   const cached = await transaction(SETTINGS_STORE, "readonly", async (tx) => new Promise<LibraryStats | undefined>((resolve, reject) => { const request = tx.objectStore(SETTINGS_STORE).get(STATS_KEY); request.onerror = () => reject(request.error ?? new Error("Could not read dashboard data.")); request.onsuccess = () => resolve(request.result?.value as LibraryStats | undefined); }));
   return cached ?? rebuildDashboardStats();

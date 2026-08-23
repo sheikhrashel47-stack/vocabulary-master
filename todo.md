@@ -33,4 +33,11 @@
 - [x] Category landing / category page navigation and state scope নির্ধারণ করা।
 - [x] Large structured vocabulary card ও premium category grid implement করা।
 - [x] Category search, pagination, scroll restoration এবং responsive layout যাচাই করা।
-- [x] GitHub Pages-এ Bank UX update deploy করা。
+- [x] GitHub Pages-এ Bank UX update deploy করা।
+
+## Urgent sample cleanup
+
+- [ ] Only `source: sample` vocabulary records remove করা।
+- [ ] Future automatic sample seeding বন্ধ করা।
+- [ ] Empty dashboard / empty Bank / Parser access যাচাই করা।
+- [ ] GitHub Pages urgent cleanup deploy করা।
