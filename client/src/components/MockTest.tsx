@@ -16,6 +16,7 @@ export function MockTest({ onBack, initialView = "hub" }: { onBack: () => void; 
   const [view, setView] = useState<MockView>(initialView); const [settings, setSettings] = useState<ExamSettings>(initialSettings); const [draft, setDraft] = useState<ExamSession | null>(null); const [session, setSession] = useState<ExamSession | null>(null); const [result, setResult] = useState<ExamHistoryRecord | null>(null); const [history, setHistory] = useState<ExamHistoryRecord[]>([]); const [now, setNow] = useState(Date.now()); const [reviewFilter, setReviewFilter] = useState<"all" | "correct" | "wrong" | "skipped">("all"); const [submitPrompt, setSubmitPrompt] = useState(false);
   const refreshHistory = async () => setHistory(await getExamHistory());
   useEffect(() => { void refreshHistory(); void getActiveExam().then((active) => { if (active && active.status === "active") setSession(active); }); }, []);
+  useEffect(() => { setView(initialView); }, [initialView]);
   useEffect(() => { if (!session || view !== "exam") return; const tick = window.setInterval(() => setNow(Date.now()), 1000); return () => window.clearInterval(tick); }, [session, view]);
   const remaining = session ? Math.max(0, Math.ceil((Date.parse(session.expiresAt) - now) / 1000)) : 0;
   useEffect(() => { if (session && view === "exam" && remaining <= 0) void complete("expired"); }, [remaining]);
