@@ -58,6 +58,47 @@
 - [x] Long exam navigation, timer, submit, history consistency ও performance event idempotency যাচাই করা।
 - [x] GitHub Pages-এ rebuilt Mock Test deploy করা।
 
+## Mock result refinement
+
+- [x] Admission Hub result page layout ও current Vocabulary Master result data তুলনা করা।
+- [x] Admission Hub-style result summary, answer review entry ও non-essential option serial removal implement করা।
+- [x] Result, history এবং Phase‑5 performance handoff যাচাই করা।
+
+## Pasted_content_93 Phase‑6
+
+- [x] Phase‑6 reward, XP, streak, goals, achievements ও shop rules সম্পূর্ণ পর্যালোচনা করা।
+- [x] Local event, anti-farming, XP, level, coin, goal ও streak data model নির্ধারণ করা।
+- [x] Gamification, rewards, profile এবং shop UI বাস্তবায়ন করা।
+- [ ] Phase‑6 evidence, reset, idempotency ও offline persistence যাচাই ও deploy করা।
+
+## Pasted_content_94 Phase‑7
+
+- [ ] Advanced tools, personal vocabulary data ও MindPal embed rules সম্পূর্ণ পর্যালোচনা করা।
+- [ ] Tools Hub, flashcards, word of the day, lists, notes, pronunciation ও MindPal page data model নির্ধারণ করা।
+- [ ] Phase‑7 advanced vocabulary tools ও approved MindPal iframe integrate করা।
+- [ ] Tool behavior, responsive UI, offline data integrity ও deploy যাচাই করা।
+
+## Pasted_content_95 Phase‑8
+
+- [ ] Analytics, targets, calendar, planner ও forecast rules সম্পূর্ণ পর্যালোচনা করা।
+- [ ] Existing performance and rewards evidence থেকে derived progress model নির্ধারণ করা।
+- [ ] Progress Center, planner, targets, calendar ও evidence-based insight বাস্তবায়ন করা।
+- [ ] Analytics accuracy, zero-data state, responsive UI ও deploy যাচাই করা।
+
+## Pasted_content_96 Phase‑9
+
+- [ ] Offline backup, restore, import/export ও data-health safety rules সম্পূর্ণ পর্যালোচনা করা।
+- [ ] Versioned backup, validation, preview, merge, rollback ও integrity model নির্ধারণ করা।
+- [ ] Local data and backup management tools বাস্তবায়ন করা।
+- [ ] Recovery safety, file validation, integrity checks এবং deploy যাচাই করা।
+
+## Pasted_content_97 Phase‑10
+
+- [ ] Remaining learning, practice, exam, revision ও discovery activation rules সম্পূর্ণ পর্যালোচনা করা।
+- [ ] Existing engines ব্যবহার করে Phase‑10 implementation boundary ও test modes নির্ধারণ করা।
+- [ ] Complete practice, exam, revision, discovery ও remaining ecosystem বাস্তবায়ন করা।
+- [ ] End-to-end data safety, performance, mobile UI, deployment ও completion যাচাই করা।
+
 ## Pasted_content_92 Phase‑5
 
 - [x] Remaining Phase‑5 specification এবং current exam/history data flow পর্যালোচনা করা।

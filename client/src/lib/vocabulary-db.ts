@@ -2,7 +2,7 @@
 import { deriveFirstLetter, normalizeWordKey, type VocabularyWord, type WordRelation } from "@/data/vocabulary";
 
 const DB_NAME = "vocabulary-master-db";
-const DB_VERSION = 5;
+const DB_VERSION = 6;
 const WORDS_STORE = "words";
 const SETTINGS_STORE = "settings";
 const STATS_KEY = "library-stats";
@@ -42,6 +42,13 @@ export function initializeVocabularyDb(): Promise<IDBDatabase> {
       const revision = db.objectStoreNames.contains("revision-queue") ? request.transaction!.objectStore("revision-queue") : db.createObjectStore("revision-queue", { keyPath: "vocabularyId" });
       if (!revision.indexNames.contains("priority")) revision.createIndex("priority", "priority", { unique: false });
       if (!db.objectStoreNames.contains("performance-events")) db.createObjectStore("performance-events", { keyPath: "eventId" });
+      if (!db.objectStoreNames.contains("gamification-state")) db.createObjectStore("gamification-state", { keyPath: "key" });
+      if (!db.objectStoreNames.contains("gamification-events")) db.createObjectStore("gamification-events", { keyPath: "eventId" });
+      const rewards = db.objectStoreNames.contains("reward-transactions") ? request.transaction!.objectStore("reward-transactions") : db.createObjectStore("reward-transactions", { keyPath: "rewardId" });
+      if (!rewards.indexNames.contains("createdAt")) rewards.createIndex("createdAt", "createdAt", { unique: false });
+      if (!db.objectStoreNames.contains("daily-goals")) db.createObjectStore("daily-goals", { keyPath: "goalDate" });
+      if (!db.objectStoreNames.contains("achievements")) db.createObjectStore("achievements", { keyPath: "achievementId" });
+      if (!db.objectStoreNames.contains("shop-ownership")) db.createObjectStore("shop-ownership", { keyPath: "itemId" });
       if (event.oldVersion < 3 && db.objectStoreNames.contains(WORDS_STORE)) {
         const cursor = words.openCursor();
         cursor.onsuccess = () => { const item = cursor.result; if (!item) return; item.update(normalizeStoredWord(item.value as VocabularyWord)); item.continue(); };

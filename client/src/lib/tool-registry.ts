@@ -1,4 +1,4 @@
-// Phase-5 tool boundary: local vocabulary, Mock Test, Mistake Bank and Smart Revision are active; reward, AI and sync features remain locked.
+// Phase-6 tool boundary: local rewards are active; AI and external infrastructure remain locked.
 export type ToolKey =
   | "parser" | "match" | "mock" | "flash" | "fillBlank" | "synonymTest" | "antonymTest" | "meaningTest"
   | "revision" | "mistake" | "xp" | "level" | "reward" | "shop" | "achievement" | "streak"
@@ -15,12 +15,12 @@ export const futureTools: Record<ToolKey, { label: string; active: boolean }> = 
   meaningTest: { label: "Bengali Meaning Test", active: false },
   revision: { label: "Smart Revision", active: true },
   mistake: { label: "Mistake Bank", active: true },
-  xp: { label: "XP", active: false },
-  level: { label: "Level System", active: false },
-  reward: { label: "Rewards", active: false },
-  shop: { label: "Shop", active: false },
-  achievement: { label: "Achievements", active: false },
-  streak: { label: "Streak", active: false },
+  xp: { label: "XP", active: true },
+  level: { label: "Level System", active: true },
+  reward: { label: "Rewards", active: true },
+  shop: { label: "Shop", active: true },
+  achievement: { label: "Achievements", active: true },
+  streak: { label: "Streak", active: true },
   wordOfDay: { label: "Word of the Day", active: false },
   aiTutor: { label: "AI Tutor", active: false },
   notification: { label: "Notifications", active: false },
