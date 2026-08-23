@@ -49,3 +49,12 @@
 - [x] Mock hub, setup, exam engine, timer, autosave ও review UI implement করা।
 - [x] Empty-data state, timer, submission, score, history ও locked-tool boundary যাচাই করা।
 - [x] GitHub Pages-এ Phase‑4 version deploy করা।
+
+## Pasted_content_92 Phase‑5
+
+- [ ] Remaining Phase‑5 specification এবং current exam/history data flow পর্যালোচনা করা।
+- [ ] Performance event, word mastery, mistake record ও revision queue model নির্ধারণ করা।
+- [ ] Existing Mock history থেকে idempotent performance migration implement করা।
+- [ ] Mistake Bank, Smart Revision, word-level performance ও dashboard integration implement করা।
+- [ ] Priority/mastery calculation, responsive UI এবং locked-feature boundary যাচাই করা।
+- [ ] GitHub Pages-এ Phase‑5 version deploy করা।

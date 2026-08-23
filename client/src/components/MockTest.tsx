@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { alphabet } from "@/data/vocabulary";
 import { createQuestions, formatTime, scoreExam, type ExamHistoryRecord, type ExamSession, type ExamSettings } from "@/lib/exam-engine";
 import { discardActiveExam, finalizeExam, getActiveExam, getExamCandidates, getExamHistory, saveActiveExam } from "@/lib/exam-db";
+import { migrateExamPerformance } from "@/lib/performance-db";
 
 type MockView = "hub" | "setup" | "confirm" | "exam" | "result" | "review" | "history";
 const initialSettings: ExamSettings = { source: "all", questionCount: 20, timeMinutes: 10, difficulty: "all", negativeMarking: 0 };
@@ -15,7 +16,7 @@ function ResultSummary({ record }: { record: ExamHistoryRecord }) { return <sect
 export function MockTest({ onBack, initialView = "hub" }: { onBack: () => void; initialView?: "hub" | "history" }) {
   const [view, setView] = useState<MockView>(initialView); const [settings, setSettings] = useState<ExamSettings>(initialSettings); const [draft, setDraft] = useState<ExamSession | null>(null); const [session, setSession] = useState<ExamSession | null>(null); const [result, setResult] = useState<ExamHistoryRecord | null>(null); const [history, setHistory] = useState<ExamHistoryRecord[]>([]); const [now, setNow] = useState(Date.now()); const [reviewFilter, setReviewFilter] = useState<"all" | "correct" | "wrong" | "skipped">("all"); const [submitPrompt, setSubmitPrompt] = useState(false);
   const refreshHistory = async () => setHistory(await getExamHistory());
-  useEffect(() => { void refreshHistory(); void getActiveExam().then((active) => { if (active && active.status === "active") setSession(active); }); }, []);
+  useEffect(() => { void migrateExamPerformance().then(refreshHistory); void getActiveExam().then((active) => { if (active && active.status === "active") setSession(active); }); }, []);
   useEffect(() => { setView(initialView); }, [initialView]);
   useEffect(() => { if (!session || view !== "exam") return; const tick = window.setInterval(() => setNow(Date.now()), 1000); return () => window.clearInterval(tick); }, [session, view]);
   const remaining = session ? Math.max(0, Math.ceil((Date.parse(session.expiresAt) - now) / 1000)) : 0;
@@ -26,7 +27,7 @@ export function MockTest({ onBack, initialView = "hub" }: { onBack: () => void; 
   const start = async () => { if (!draft) return; await saveActiveExam(draft); setSession(draft); setNow(Date.now()); setView("exam"); };
   const choose = (answer: string) => { if (!session || !currentQuestion || session.status !== "active") return; const next = { ...session, answers: { ...session.answers, [currentQuestion.id]: answer } }; setSession(next); void saveActiveExam(next); };
   const move = (index: number) => { if (!session) return; const next = { ...session, currentQuestion: Math.max(0, Math.min(index, session.questions.length - 1)) }; setSession(next); void saveActiveExam(next); window.scrollTo({ top: 0, behavior: "auto" }); };
-  const complete = async (status: "submitted" | "expired") => { if (!session || session.status !== "active") return; const locked = { ...session, status }; setSession(locked); const record = scoreExam(locked, status); await finalizeExam(record); setResult(record); await refreshHistory(); setSubmitPrompt(false); setView("result"); };
+  const complete = async (status: "submitted" | "expired") => { if (!session || session.status !== "active") return; const locked = { ...session, status }; setSession(locked); const record = scoreExam(locked, status); await finalizeExam(record); await migrateExamPerformance(); setResult(record); await refreshHistory(); setSubmitPrompt(false); setView("result"); };
   const discard = async () => { if (!session) return; await discardActiveExam(session.examId); setSession(null); setView("hub"); };
   const activeSession = session && session.status === "active" ? session : null;
   const reviewItems = useMemo(() => result?.questionResults.filter((item) => reviewFilter === "all" || item.status === reviewFilter) ?? [], [result, reviewFilter]);
