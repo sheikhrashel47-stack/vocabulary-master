@@ -9,3 +9,11 @@
 - [x] User-authorized repository public visibility apply করা।
 - [x] Public repository-তে GitHub Pages workflow source enable করা।
 - [x] Live app-এর core Phase-1 screen ও asset load যাচাই করা।
+
+## Pasted_content_88 refinement
+
+- [ ] Remaining specification sections পর্যালোচনা করা।
+- [ ] Current app-এর সঙ্গে safe Phase‑1 gaps নির্ধারণ করা।
+- [ ] Locked tools সক্রিয় না করে প্রয়োজনীয় refinement implement করা।
+- [ ] Build, mobile UI এবং tool-lock boundary পুনরায় যাচাই করা।
+- [ ] GitHub Pages-এ refined version deploy করা।

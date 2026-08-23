@@ -10,6 +10,7 @@ export type VocabularyWord = {
   category: string;
   difficulty: "easy" | "medium" | "advanced";
   tags: string[];
+  favorite?: boolean;
   createdAt: string;
   updatedAt: string;
 };

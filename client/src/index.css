@@ -26,3 +26,7 @@
   .future-card{padding:14px 17px;border-radius:18px}.future-card::before{content:"LEDGER / FUTURE";color:var(--emerald);font-size:10px;font-weight:800;letter-spacing:.16em}
   .bottom-nav{top:113px;width:202px;border-radius:22px}.bottom-nav::before{content:"YOUR INDEX";padding:8px 12px 4px;color:var(--emerald);font-size:9px;font-weight:800;letter-spacing:.16em}.nav-item{min-height:44px}
 }
+
+/* Phase‑1 token aliases: keep premium light decisions globally controllable without changing the established Scholar's Ledger composition. */
+:root{--bg-primary:var(--bg);--bg-secondary:#edf4ef;--surface:var(--paper);--surface-elevated:var(--paper);--text-primary:var(--ink);--text-secondary:var(--sub);--text-muted:var(--muted);--primary:var(--emerald);--primary-soft:var(--mint);--border:var(--line);--success:var(--emerald);--warning:#a96c21;--danger:#af3c38;--radius-sm:11px;--radius-md:14px;--radius-lg:18px;--radius-xl:24px;--radius-pill:999px;--shadow-sm:0 4px 14px rgba(36,62,50,.05);--shadow-md:var(--shadow)}
+.load-more{display:flex;align-items:center;justify-content:center;min-height:46px;width:100%;margin-top:13px;border:1px solid var(--line2);border-radius:var(--radius-md);color:var(--primary);background:var(--surface);font-size:13px;font-weight:800;transition:transform .16s var(--ease),background .16s var(--ease)}.load-more:hover{background:var(--primary-soft)}.load-more:active{transform:scale(.98)}
