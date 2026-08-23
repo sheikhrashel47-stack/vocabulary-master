@@ -26,3 +26,11 @@
 - [x] Real-data dashboard, Bank integration এবং word detail rendering implement করা।
 - [x] Import, duplicate, persistence, performance এবং locked future tools যাচাই করা।
 - [x] GitHub Pages-এ Phase‑2 version deploy করা।
+
+## Pasted_content_90 Bank UX correction
+
+- [ ] Remaining Bank UX specification পড়া ও existing Bank flow তুলনা করা।
+- [ ] Category landing / category page navigation and state scope নির্ধারণ করা।
+- [ ] Large structured vocabulary card ও premium category grid implement করা।
+- [ ] Category search, pagination, scroll restoration এবং responsive layout যাচাই করা।
+- [ ] GitHub Pages-এ Bank UX update deploy করা।
