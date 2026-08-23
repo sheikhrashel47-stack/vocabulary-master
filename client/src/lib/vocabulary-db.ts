@@ -2,10 +2,12 @@
 import { deriveFirstLetter, normalizeWordKey, type VocabularyWord, type WordRelation } from "@/data/vocabulary";
 
 const DB_NAME = "vocabulary-master-db";
-const DB_VERSION = 3;
+const DB_VERSION = 4;
 const WORDS_STORE = "words";
 const SETTINGS_STORE = "settings";
 const STATS_KEY = "library-stats";
+export const EXAM_SESSIONS_STORE = "exam-sessions";
+export const EXAM_HISTORY_STORE = "exam-history";
 
 export type WordPage = { items: VocabularyWord[]; hasMore: boolean };
 export type LibraryStats = { totalWords: number; withSynonyms: number; withAntonyms: number; letterCounts: Record<string, number>; updatedAt: string };
@@ -31,6 +33,9 @@ export function initializeVocabularyDb(): Promise<IDBDatabase> {
       if (!words.indexNames.contains("createdAt")) words.createIndex("createdAt", "createdAt", { unique: false });
       if (!words.indexNames.contains("updatedAt")) words.createIndex("updatedAt", "updatedAt", { unique: false });
       if (!db.objectStoreNames.contains(SETTINGS_STORE)) db.createObjectStore(SETTINGS_STORE, { keyPath: "key" });
+      if (!db.objectStoreNames.contains(EXAM_SESSIONS_STORE)) db.createObjectStore(EXAM_SESSIONS_STORE, { keyPath: "examId" });
+      const history = db.objectStoreNames.contains(EXAM_HISTORY_STORE) ? request.transaction!.objectStore(EXAM_HISTORY_STORE) : db.createObjectStore(EXAM_HISTORY_STORE, { keyPath: "examId" });
+      if (!history.indexNames.contains("completedAt")) history.createIndex("completedAt", "completedAt", { unique: false });
       if (event.oldVersion < 3 && db.objectStoreNames.contains(WORDS_STORE)) {
         const cursor = words.openCursor();
         cursor.onsuccess = () => { const item = cursor.result; if (!item) return; item.update(normalizeStoredWord(item.value as VocabularyWord)); item.continue(); };

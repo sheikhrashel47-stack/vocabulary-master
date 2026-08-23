@@ -2,12 +2,12 @@
 import { BookOpenText, History, House, LockKeyhole, UserRound } from "lucide-react";
 import type { ReactNode } from "react";
 
-export type AppPage = "home" | "bank" | "category" | "parser" | "practice" | "history" | "profile" | "settings" | "detail";
+export type AppPage = "home" | "bank" | "category" | "parser" | "practice" | "mock" | "history" | "profile" | "settings" | "detail";
 
 const navigation: Array<{ key: AppPage; label: string; icon: typeof House; locked?: boolean }> = [
   { key: "home", label: "Home", icon: House },
   { key: "bank", label: "Bank", icon: BookOpenText },
-  { key: "practice", label: "Practice", icon: LockKeyhole, locked: true },
+  { key: "practice", label: "Practice", icon: LockKeyhole },
   { key: "history", label: "History", icon: History },
   { key: "profile", label: "Profile", icon: UserRound },
 ];

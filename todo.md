@@ -37,7 +37,15 @@
 
 ## Urgent sample cleanup
 
-- [ ] Only `source: sample` vocabulary records remove করা।
-- [ ] Future automatic sample seeding বন্ধ করা।
-- [ ] Empty dashboard / empty Bank / Parser access যাচাই করা।
-- [ ] GitHub Pages urgent cleanup deploy করা।
+- [x] Only `source: sample` vocabulary records remove করা।
+- [x] Future automatic sample seeding বন্ধ করা।
+- [x] Empty dashboard / empty Bank / Parser access যাচাই করা।
+- [x] GitHub Pages urgent cleanup deploy করা।
+
+## Pasted_content_91 Phase‑4
+
+- [ ] Remaining Phase‑4 specification পড়া ও current data readiness যাচাই করা।
+- [ ] Exam session, question generator, score/result ও history schema নির্ধারণ করা।
+- [ ] Mock hub, setup, exam engine, timer, autosave ও review UI implement করা।
+- [ ] Empty-data state, timer, submission, score, history ও locked-tool boundary যাচাই করা।
+- [ ] GitHub Pages-এ Phase‑4 version deploy করা।

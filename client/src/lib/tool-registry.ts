@@ -7,7 +7,7 @@ export type ToolKey =
 export const futureTools: Record<ToolKey, { label: string; active: boolean }> = {
   parser: { label: "Vocabulary Parser", active: true },
   match: { label: "Match Game", active: false },
-  mock: { label: "Mock Test", active: false },
+  mock: { label: "Mock Test", active: true },
   flash: { label: "Flash Test", active: false },
   fillBlank: { label: "Fill in the Blank", active: false },
   synonymTest: { label: "Synonym Test", active: false },
