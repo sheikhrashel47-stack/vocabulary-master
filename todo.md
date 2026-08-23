@@ -73,9 +73,9 @@
 
 ## Pasted_content_94 Phase‑7
 
-- [ ] Advanced tools, personal vocabulary data ও MindPal embed rules সম্পূর্ণ পর্যালোচনা করা।
-- [ ] Tools Hub, flashcards, word of the day, lists, notes, pronunciation ও MindPal page data model নির্ধারণ করা।
-- [ ] Phase‑7 advanced vocabulary tools ও approved MindPal iframe integrate করা।
+- [x] Advanced tools, personal vocabulary data ও MindPal embed rules সম্পূর্ণ পর্যালোচনা করা।
+- [x] Tools Hub, flashcards, word of the day, lists, notes, pronunciation ও MindPal page data model নির্ধারণ করা।
+- [x] Phase‑7 advanced vocabulary tools ও approved MindPal iframe integrate করা।
 - [ ] Tool behavior, responsive UI, offline data integrity ও deploy যাচাই করা।
 
 ## Pasted_content_95 Phase‑8

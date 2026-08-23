@@ -2,7 +2,7 @@
 import { deriveFirstLetter, normalizeWordKey, type VocabularyWord, type WordRelation } from "@/data/vocabulary";
 
 const DB_NAME = "vocabulary-master-db";
-const DB_VERSION = 6;
+const DB_VERSION = 7;
 const WORDS_STORE = "words";
 const SETTINGS_STORE = "settings";
 const STATS_KEY = "library-stats";
@@ -49,6 +49,17 @@ export function initializeVocabularyDb(): Promise<IDBDatabase> {
       if (!db.objectStoreNames.contains("daily-goals")) db.createObjectStore("daily-goals", { keyPath: "goalDate" });
       if (!db.objectStoreNames.contains("achievements")) db.createObjectStore("achievements", { keyPath: "achievementId" });
       if (!db.objectStoreNames.contains("shop-ownership")) db.createObjectStore("shop-ownership", { keyPath: "itemId" });
+      const wordTools = db.objectStoreNames.contains("word-tools") ? request.transaction!.objectStore("word-tools") : db.createObjectStore("word-tools", { keyPath: "vocabularyId" });
+      if (!wordTools.indexNames.contains("difficult")) wordTools.createIndex("difficult", "difficult", { unique: false });
+      if (!wordTools.indexNames.contains("pinned")) wordTools.createIndex("pinned", "pinned", { unique: false });
+      if (!db.objectStoreNames.contains("personal-notes")) db.createObjectStore("personal-notes", { keyPath: "vocabularyId" });
+      const lists = db.objectStoreNames.contains("custom-lists") ? request.transaction!.objectStore("custom-lists") : db.createObjectStore("custom-lists", { keyPath: "listId" });
+      if (!lists.indexNames.contains("updatedAt")) lists.createIndex("updatedAt", "updatedAt", { unique: false });
+      const listItems = db.objectStoreNames.contains("custom-list-items") ? request.transaction!.objectStore("custom-list-items") : db.createObjectStore("custom-list-items", { keyPath: "listItemId" });
+      if (!listItems.indexNames.contains("listId")) listItems.createIndex("listId", "listId", { unique: false });
+      if (!listItems.indexNames.contains("vocabularyId")) listItems.createIndex("vocabularyId", "vocabularyId", { unique: false });
+      if (!db.objectStoreNames.contains("word-of-day")) db.createObjectStore("word-of-day", { keyPath: "date" });
+      if (!db.objectStoreNames.contains("tool-history")) db.createObjectStore("tool-history", { keyPath: "eventId" });
       if (event.oldVersion < 3 && db.objectStoreNames.contains(WORDS_STORE)) {
         const cursor = words.openCursor();
         cursor.onsuccess = () => { const item = cursor.result; if (!item) return; item.update(normalizeStoredWord(item.value as VocabularyWord)); item.continue(); };
