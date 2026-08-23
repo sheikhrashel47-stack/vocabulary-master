@@ -87,9 +87,9 @@
 
 ## Pasted_content_96 Phase‑9
 
-- [ ] Offline backup, restore, import/export ও data-health safety rules সম্পূর্ণ পর্যালোচনা করা।
-- [ ] Versioned backup, validation, preview, merge, rollback ও integrity model নির্ধারণ করা।
-- [ ] Local data and backup management tools বাস্তবায়ন করা।
+- [x] Offline backup, restore, import/export ও data-health safety rules সম্পূর্ণ পর্যালোচনা করা।
+- [x] Versioned backup, validation, preview, merge, rollback ও integrity model নির্ধারণ করা।
+- [x] Local data and backup management tools বাস্তবায়ন করা।
 - [ ] Recovery safety, file validation, integrity checks এবং deploy যাচাই করা।
 
 ## Pasted_content_97 Phase‑10

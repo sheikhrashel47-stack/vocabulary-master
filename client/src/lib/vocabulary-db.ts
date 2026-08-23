@@ -2,7 +2,7 @@
 import { deriveFirstLetter, normalizeWordKey, type VocabularyWord, type WordRelation } from "@/data/vocabulary";
 
 const DB_NAME = "vocabulary-master-db";
-const DB_VERSION = 8;
+const DB_VERSION = 9;
 const WORDS_STORE = "words";
 const SETTINGS_STORE = "settings";
 const STATS_KEY = "library-stats";
@@ -64,6 +64,8 @@ export function initializeVocabularyDb(): Promise<IDBDatabase> {
       if (!targets.indexNames.contains("updatedAt")) targets.createIndex("updatedAt", "updatedAt", { unique: false });
       if (!targets.indexNames.contains("deadline")) targets.createIndex("deadline", "deadline", { unique: false });
       if (!db.objectStoreNames.contains("planner-state")) db.createObjectStore("planner-state", { keyPath: "date" });
+      const safety = db.objectStoreNames.contains("safety-backups") ? request.transaction!.objectStore("safety-backups") : db.createObjectStore("safety-backups", { keyPath: "snapshotId" });
+      if (!safety.indexNames.contains("createdAt")) safety.createIndex("createdAt", "createdAt", { unique: false });
       if (event.oldVersion < 3 && db.objectStoreNames.contains(WORDS_STORE)) {
         const cursor = words.openCursor();
         cursor.onsuccess = () => { const item = cursor.result; if (!item) return; item.update(normalizeStoredWord(item.value as VocabularyWord)); item.continue(); };
