@@ -56,7 +56,7 @@
 - [x] Vocabulary Master exam data, history ও Phase‑5 performance boundary mapping নির্ধারণ করা।
 - [x] Admission Hub-inspired test setup, question paging, navigator, sticky controls ও result flow rebuild করা।
 - [x] Long exam navigation, timer, submit, history consistency ও performance event idempotency যাচাই করা।
-- [ ] GitHub Pages-এ rebuilt Mock Test deploy করা।
+- [x] GitHub Pages-এ rebuilt Mock Test deploy করা।
 
 ## Pasted_content_92 Phase‑5
 
