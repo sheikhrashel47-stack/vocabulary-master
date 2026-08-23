@@ -2,7 +2,10 @@
 - [x] Dashboard/Bank/History/Profile screen ও locked Practice placeholder তৈরি করা।
 - [x] Vocabulary search, A–Z navigation ও word-detail structure implement করা।
 - [x] Responsive, empty-state ও tool-lock rules যাচাই করা।
-- [x] Final visual review, checkpoint ও delivery দেওয়া。
-- [ ] GitHub Pages-compatible static build ও asset paths যাচাই করা।
-- [ ] Vocabulary Master-এর private GitHub repository ও Pages workflow তৈরি করা।
-- [ ] GitHub Pages deployment এবং live URL যাচাই করা।
+- [x] Final visual review, checkpoint ও delivery দেওয়া।
+- [x] GitHub Pages-compatible static build ও asset paths যাচাই করা।
+- [x] Vocabulary Master repository ও Pages workflow তৈরি করা।
+- [x] GitHub Pages deployment এবং live URL যাচাই করা।
+- [x] User-authorized repository public visibility apply করা।
+- [x] Public repository-তে GitHub Pages workflow source enable করা।
+- [x] Live app-এর core Phase-1 screen ও asset load যাচাই করা।
