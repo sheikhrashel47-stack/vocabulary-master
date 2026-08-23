@@ -1,35 +1,44 @@
-// Scholar’s Ledger reminder: sample vocabulary is clearly marked, text-first, and never used to fabricate progress.
+// Scholar’s Ledger reminder: vocabulary data stays structured, clearly sourced, and never fabricates learning progress.
+export type WordRelation = { word: string; meaningBn: string };
+
 export type VocabularyWord = {
   id: string;
   word: string;
+  wordKey: string;
   meaningBn: string;
-  synonyms: string[];
-  antonyms: string[];
+  synonyms: WordRelation[];
+  antonyms: WordRelation[];
   tip?: string;
   firstLetter: string;
   category: string;
   difficulty: "easy" | "medium" | "advanced";
   tags: string[];
   favorite?: boolean;
+  source: "sample" | "imported";
   createdAt: string;
   updatedAt: string;
 };
 
+export const normalizeWordKey = (value: string) => value.normalize("NFKC").trim().toLocaleLowerCase();
+export const deriveFirstLetter = (word: string) => word.match(/[A-Za-z]/)?.[0]?.toUpperCase() ?? "#";
+
 const createdAt = "2026-08-24T00:00:00.000Z";
+const relation = (word: string, meaningBn = ""): WordRelation => ({ word, meaningBn });
+const sample = (id: string, word: string, meaningBn: string, synonyms: string[], antonyms: string[], tip: string, category: string, difficulty: VocabularyWord["difficulty"], tags: string[]): VocabularyWord => ({ id, word, wordKey: normalizeWordKey(word), meaningBn, synonyms: synonyms.map((value) => relation(value)), antonyms: antonyms.map((value) => relation(value)), tip, firstLetter: deriveFirstLetter(word), category, difficulty, tags, source: "sample", createdAt, updatedAt: createdAt });
 
 export const sampleVocabulary: VocabularyWord[] = [
-  { id: "sample-adept", word: "Adept", meaningBn: "দক্ষ; পারদর্শী", synonyms: ["Skilled", "Proficient", "Expert"], antonyms: ["Inept", "Unskilled"], tip: "Adept = a depth of skill.", firstLetter: "A", category: "General", difficulty: "medium", tags: ["adjective"], createdAt, updatedAt: createdAt },
-  { id: "sample-benevolent", word: "Benevolent", meaningBn: "দয়ালু; কল্যাণকামী", synonyms: ["Kind", "Generous", "Charitable"], antonyms: ["Cruel", "Malevolent"], tip: "Bene means good; benevolent means wishing good.", firstLetter: "B", category: "Character", difficulty: "advanced", tags: ["adjective"], createdAt, updatedAt: createdAt },
-  { id: "sample-conceal", word: "Conceal", meaningBn: "লুকানো; গোপন রাখা", synonyms: ["Hide", "Cover", "Disguise"], antonyms: ["Reveal", "Expose"], tip: "Conceal keeps something out of sight.", firstLetter: "C", category: "Action", difficulty: "medium", tags: ["verb"], createdAt, updatedAt: createdAt },
-  { id: "sample-compassion", word: "Compassion", meaningBn: "সহমর্মিতা; করুণা", synonyms: ["Empathy", "Mercy", "Kindness"], antonyms: ["Cruelty", "Indifference"], tip: "Compassion means feeling concern and wanting to help.", firstLetter: "C", category: "Character", difficulty: "medium", tags: ["noun"], createdAt, updatedAt: createdAt },
-  { id: "sample-comprehend", word: "Comprehend", meaningBn: "বোঝা; অনুধাবন করা", synonyms: ["Understand", "Grasp", "Perceive"], antonyms: ["Misunderstand", "Ignore"], tip: "Comprehend is a deeper form of understand.", firstLetter: "C", category: "Learning", difficulty: "medium", tags: ["verb"], createdAt, updatedAt: createdAt },
-  { id: "sample-conjecture", word: "Conjecture", meaningBn: "অনুমান করা; ধারণা", synonyms: ["Suppose", "Guess", "Hypothesis"], antonyms: ["Fact", "Proof"], tip: "A conjecture is an idea without final proof.", firstLetter: "C", category: "Learning", difficulty: "advanced", tags: ["noun", "verb"], createdAt, updatedAt: createdAt },
-  { id: "sample-diligent", word: "Diligent", meaningBn: "পরিশ্রমী; অধ্যবসায়ী", synonyms: ["Hardworking", "Assiduous", "Industrious"], antonyms: ["Lazy", "Negligent"], tip: "Diligent work is careful, regular work.", firstLetter: "D", category: "Character", difficulty: "medium", tags: ["adjective"], createdAt, updatedAt: createdAt },
-  { id: "sample-elated", word: "Elated", meaningBn: "অত্যন্ত আনন্দিত", synonyms: ["Joyful", "Delighted", "Euphoric"], antonyms: ["Depressed", "Miserable"], tip: "Elated is a lifted, high feeling.", firstLetter: "E", category: "Emotion", difficulty: "medium", tags: ["adjective"], createdAt, updatedAt: createdAt },
-  { id: "sample-fragile", word: "Fragile", meaningBn: "ভঙ্গুর; নাজুক", synonyms: ["Delicate", "Brittle", "Weak"], antonyms: ["Strong", "Durable"], tip: "Fragile things break easily.", firstLetter: "F", category: "General", difficulty: "easy", tags: ["adjective"], createdAt, updatedAt: createdAt },
-  { id: "sample-genuine", word: "Genuine", meaningBn: "আসল; খাঁটি", synonyms: ["Authentic", "Real", "Sincere"], antonyms: ["Fake", "Artificial"], tip: "Genuine means not copied or pretended.", firstLetter: "G", category: "General", difficulty: "medium", tags: ["adjective"], createdAt, updatedAt: createdAt },
-  { id: "sample-hinder", word: "Hinder", meaningBn: "বাধা দেওয়া; ব্যাহত করা", synonyms: ["Obstruct", "Impede", "Delay"], antonyms: ["Help", "Assist"], tip: "A hindrance slows a path forward.", firstLetter: "H", category: "Action", difficulty: "medium", tags: ["verb"], createdAt, updatedAt: createdAt },
-  { id: "sample-immense", word: "Immense", meaningBn: "বিরাট; অপরিমেয়", synonyms: ["Huge", "Enormous", "Vast"], antonyms: ["Tiny", "Small"], tip: "Immense describes something beyond ordinary size.", firstLetter: "I", category: "General", difficulty: "medium", tags: ["adjective"], createdAt, updatedAt: createdAt },
+  sample("sample-adept", "Adept", "দক্ষ; পারদর্শী", ["Skilled", "Proficient", "Expert"], ["Inept", "Unskilled"], "Adept = a depth of skill.", "General", "medium", ["adjective"]),
+  sample("sample-benevolent", "Benevolent", "দয়ালু; কল্যাণকামী", ["Kind", "Generous", "Charitable"], ["Cruel", "Malevolent"], "Bene means good; benevolent means wishing good.", "Character", "advanced", ["adjective"]),
+  sample("sample-conceal", "Conceal", "লুকানো; গোপন রাখা", ["Hide", "Cover", "Disguise"], ["Reveal", "Expose"], "Conceal keeps something out of sight.", "Action", "medium", ["verb"]),
+  sample("sample-compassion", "Compassion", "সহমর্মিতা; করুণা", ["Empathy", "Mercy", "Kindness"], ["Cruelty", "Indifference"], "Compassion means feeling concern and wanting to help.", "Character", "medium", ["noun"]),
+  sample("sample-comprehend", "Comprehend", "বোঝা; অনুধাবন করা", ["Understand", "Grasp", "Perceive"], ["Misunderstand", "Ignore"], "Comprehend is a deeper form of understand.", "Learning", "medium", ["verb"]),
+  sample("sample-conjecture", "Conjecture", "অনুমান করা; ধারণা", ["Suppose", "Guess", "Hypothesis"], ["Fact", "Proof"], "A conjecture is an idea without final proof.", "Learning", "advanced", ["noun", "verb"]),
+  sample("sample-diligent", "Diligent", "পরিশ্রমী; অধ্যবসায়ী", ["Hardworking", "Assiduous", "Industrious"], ["Lazy", "Negligent"], "Diligent work is careful, regular work.", "Character", "medium", ["adjective"]),
+  sample("sample-elated", "Elated", "অত্যন্ত আনন্দিত", ["Joyful", "Delighted", "Euphoric"], ["Depressed", "Miserable"], "Elated is a lifted, high feeling.", "Emotion", "medium", ["adjective"]),
+  sample("sample-fragile", "Fragile", "ভঙ্গুর; নাজুক", ["Delicate", "Brittle", "Weak"], ["Strong", "Durable"], "Fragile things break easily.", "General", "easy", ["adjective"]),
+  sample("sample-genuine", "Genuine", "আসল; খাঁটি", ["Authentic", "Real", "Sincere"], ["Fake", "Artificial"], "Genuine means not copied or pretended.", "General", "medium", ["adjective"]),
+  sample("sample-hinder", "Hinder", "বাধা দেওয়া; ব্যাহত করা", ["Obstruct", "Impede", "Delay"], ["Help", "Assist"], "A hindrance slows a path forward.", "Action", "medium", ["verb"]),
+  sample("sample-immense", "Immense", "বিরাট; অপরিমেয়", ["Huge", "Enormous", "Vast"], ["Tiny", "Small"], "Immense describes something beyond ordinary size.", "General", "medium", ["adjective"]),
 ];
 
 export const alphabet = Array.from({ length: 26 }, (_, index) => String.fromCharCode(65 + index));

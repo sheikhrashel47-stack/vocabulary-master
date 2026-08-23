@@ -1,11 +1,11 @@
-// Scholar’s Ledger reminder: every future capability stays declarative, isolated, and inactive throughout Phase-1.
+// Phase-2 tool boundary: parser is active for local vocabulary management; all learning, reward, AI, and sync tools remain inactive.
 export type ToolKey =
   | "parser" | "match" | "mock" | "flash" | "fillBlank" | "synonymTest" | "antonymTest" | "meaningTest"
   | "revision" | "mistake" | "xp" | "level" | "reward" | "shop" | "achievement" | "streak"
   | "wordOfDay" | "aiTutor" | "notification" | "social" | "leaderboard" | "cloudSync" | "externalApi";
 
-export const futureTools: Record<ToolKey, { label: string; active: false }> = {
-  parser: { label: "Vocabulary Parser", active: false },
+export const futureTools: Record<ToolKey, { label: string; active: boolean }> = {
+  parser: { label: "Vocabulary Parser", active: true },
   match: { label: "Match Game", active: false },
   mock: { label: "Mock Test", active: false },
   flash: { label: "Flash Test", active: false },

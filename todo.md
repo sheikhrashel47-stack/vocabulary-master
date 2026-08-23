@@ -17,3 +17,12 @@
 - [x] Locked tools সক্রিয় না করে প্রয়োজনীয় refinement implement করা।
 - [x] Build, mobile UI এবং tool-lock boundary পুনরায় যাচাই করা।
 - [x] GitHub Pages-এ refined version deploy করা।
+
+## Pasted_content_89 Phase‑2
+
+- [ ] Remaining Phase‑2 specification sections পড়া ও current implementation তুলনা করা।
+- [ ] Structured synonym/antonym schema, parser, validation এবং duplicate policy নির্ধারণ করা।
+- [ ] Parser preview/import UI এবং local IndexedDB engine implement করা।
+- [ ] Real-data dashboard, Bank integration এবং word detail rendering implement করা।
+- [ ] Import, duplicate, persistence, performance এবং locked future tools যাচাই করা।
+- [ ] GitHub Pages-এ Phase‑2 version deploy করা।
