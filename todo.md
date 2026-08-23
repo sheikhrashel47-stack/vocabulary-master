@@ -80,10 +80,10 @@
 
 ## Pasted_content_95 Phase‑8
 
-- [ ] Analytics, targets, calendar, planner ও forecast rules সম্পূর্ণ পর্যালোচনা করা।
-- [ ] Existing performance and rewards evidence থেকে derived progress model নির্ধারণ করা।
-- [ ] Progress Center, planner, targets, calendar ও evidence-based insight বাস্তবায়ন করা।
-- [ ] Analytics accuracy, zero-data state, responsive UI ও deploy যাচাই করা।
+- [x] Analytics, targets, calendar, planner ও forecast rules সম্পূর্ণ পর্যালোচনা করা।
+- [x] Existing performance and rewards evidence থেকে derived progress model নির্ধারণ করা।
+- [x] Progress Center, planner, targets, calendar ও evidence-based insight বাস্তবায়ন করা।
+- [x] Analytics accuracy, zero-data state, responsive UI ও deploy যাচাই করা。
 
 ## Pasted_content_96 Phase‑9
 

@@ -2,7 +2,7 @@
 import { deriveFirstLetter, normalizeWordKey, type VocabularyWord, type WordRelation } from "@/data/vocabulary";
 
 const DB_NAME = "vocabulary-master-db";
-const DB_VERSION = 7;
+const DB_VERSION = 8;
 const WORDS_STORE = "words";
 const SETTINGS_STORE = "settings";
 const STATS_KEY = "library-stats";
@@ -60,6 +60,10 @@ export function initializeVocabularyDb(): Promise<IDBDatabase> {
       if (!listItems.indexNames.contains("vocabularyId")) listItems.createIndex("vocabularyId", "vocabularyId", { unique: false });
       if (!db.objectStoreNames.contains("word-of-day")) db.createObjectStore("word-of-day", { keyPath: "date" });
       if (!db.objectStoreNames.contains("tool-history")) db.createObjectStore("tool-history", { keyPath: "eventId" });
+      const targets = db.objectStoreNames.contains("learning-targets") ? request.transaction!.objectStore("learning-targets") : db.createObjectStore("learning-targets", { keyPath: "targetId" });
+      if (!targets.indexNames.contains("updatedAt")) targets.createIndex("updatedAt", "updatedAt", { unique: false });
+      if (!targets.indexNames.contains("deadline")) targets.createIndex("deadline", "deadline", { unique: false });
+      if (!db.objectStoreNames.contains("planner-state")) db.createObjectStore("planner-state", { keyPath: "date" });
       if (event.oldVersion < 3 && db.objectStoreNames.contains(WORDS_STORE)) {
         const cursor = words.openCursor();
         cursor.onsuccess = () => { const item = cursor.result; if (!item) return; item.update(normalizeStoredWord(item.value as VocabularyWord)); item.continue(); };
