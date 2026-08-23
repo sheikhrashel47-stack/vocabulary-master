@@ -69,7 +69,7 @@
 - [x] Phase‑6 reward, XP, streak, goals, achievements ও shop rules সম্পূর্ণ পর্যালোচনা করা।
 - [x] Local event, anti-farming, XP, level, coin, goal ও streak data model নির্ধারণ করা।
 - [x] Gamification, rewards, profile এবং shop UI বাস্তবায়ন করা।
-- [ ] Phase‑6 evidence, reset, idempotency ও offline persistence যাচাই ও deploy করা।
+- [x] Phase‑6 evidence, reset, idempotency ও offline persistence যাচাই ও deploy করা।
 
 ## Pasted_content_94 Phase‑7
 
