@@ -1,4 +1,4 @@
-// Phase-6 tool boundary: local rewards are active; AI and external infrastructure remain locked.
+// Phase-10 tool boundary: only proven local learning flows are active; scored modes and external infrastructure remain limited.
 export type ToolKey =
   | "parser" | "match" | "mock" | "flash" | "fillBlank" | "synonymTest" | "antonymTest" | "meaningTest"
   | "revision" | "mistake" | "xp" | "level" | "reward" | "shop" | "achievement" | "streak"
@@ -8,7 +8,7 @@ export const futureTools: Record<ToolKey, { label: string; active: boolean }> = 
   parser: { label: "Vocabulary Parser", active: true },
   match: { label: "Match Game", active: false },
   mock: { label: "Mock Test", active: true },
-  flash: { label: "Flash Test", active: false },
+  flash: { label: "Flashcards", active: true },
   fillBlank: { label: "Fill in the Blank", active: false },
   synonymTest: { label: "Synonym Test", active: false },
   antonymTest: { label: "Antonym Test", active: false },

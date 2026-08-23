@@ -94,10 +94,10 @@
 
 ## Pasted_content_97 Phase‑10
 
-- [ ] Remaining learning, practice, exam, revision ও discovery activation rules সম্পূর্ণ পর্যালোচনা করা।
-- [ ] Existing engines ব্যবহার করে Phase‑10 implementation boundary ও test modes নির্ধারণ করা।
-- [ ] Complete practice, exam, revision, discovery ও remaining ecosystem বাস্তবায়ন করা।
-- [ ] End-to-end data safety, performance, mobile UI, deployment ও completion যাচাই করা।
+- [x] Remaining learning, practice, exam, revision ও discovery activation rules সম্পূর্ণ পর্যালোচনা করা।
+- [x] Existing engines ব্যবহার করে Phase‑10 implementation boundary ও test modes নির্ধারণ করা।
+- [x] Complete practice, exam, revision, discovery ও remaining ecosystem বাস্তবায়ন করা।
+- [x] End-to-end data safety, performance, mobile UI, deployment ও completion যাচাই করা।
 
 ## Pasted_content_92 Phase‑5
 

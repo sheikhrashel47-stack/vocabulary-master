@@ -1,15 +1,15 @@
 // Scholar’s Ledger reminder: a calm, narrow mobile reading desk with immediate navigation and no decorative clutter.
-import { BookOpenText, History, House, LockKeyhole, UserRound } from "lucide-react";
+import { BookOpenText, ClipboardCheck, House, Sparkles, TrendingUp, UserRound } from "lucide-react";
 import type { ReactNode } from "react";
 
-export type AppPage = "home" | "bank" | "category" | "parser" | "practice" | "mock" | "history" | "mistakes" | "revision" | "mastery" | "profile" | "settings" | "backup" | "rewards" | "tools" | "today" | "flashcards" | "favorites" | "difficult" | "pinned" | "lists" | "random" | "tutor" | "progress" | "detail";
+export type AppPage = "home" | "bank" | "category" | "parser" | "practice" | "exam" | "mock" | "history" | "mistakes" | "revision" | "mastery" | "profile" | "settings" | "backup" | "rewards" | "tools" | "today" | "flashcards" | "favorites" | "difficult" | "pinned" | "lists" | "random" | "tutor" | "progress" | "detail";
 
 const navigation: Array<{ key: AppPage; label: string; icon: typeof House; locked?: boolean }> = [
   { key: "home", label: "Home", icon: House },
-  { key: "bank", label: "Bank", icon: BookOpenText },
-  { key: "practice", label: "Practice", icon: LockKeyhole },
-  { key: "history", label: "History", icon: History },
-  { key: "profile", label: "Profile", icon: UserRound },
+  { key: "bank", label: "Vocabulary", icon: BookOpenText },
+  { key: "practice", label: "Practice", icon: Sparkles },
+  { key: "exam", label: "Exam", icon: ClipboardCheck },
+  { key: "progress", label: "Progress", icon: TrendingUp },
 ];
 const logoAsset = "https://mocktest84-g8afqveb.manus.space/manus-storage/vocabulary-master-mark_cabe734c.png";
 
