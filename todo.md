@@ -12,8 +12,8 @@
 
 ## Pasted_content_88 refinement
 
-- [ ] Remaining specification sections পর্যালোচনা করা।
-- [ ] Current app-এর সঙ্গে safe Phase‑1 gaps নির্ধারণ করা।
-- [ ] Locked tools সক্রিয় না করে প্রয়োজনীয় refinement implement করা।
-- [ ] Build, mobile UI এবং tool-lock boundary পুনরায় যাচাই করা।
-- [ ] GitHub Pages-এ refined version deploy করা।
+- [x] Remaining specification sections পর্যালোচনা করা।
+- [x] Current app-এর সঙ্গে safe Phase‑1 gaps নির্ধারণ করা।
+- [x] Locked tools সক্রিয় না করে প্রয়োজনীয় refinement implement করা।
+- [x] Build, mobile UI এবং tool-lock boundary পুনরায় যাচাই করা।
+- [x] GitHub Pages-এ refined version deploy করা।
