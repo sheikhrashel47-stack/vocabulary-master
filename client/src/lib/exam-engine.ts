@@ -1,10 +1,10 @@
-// Phase-4 exam engine: every question is generated before an exam starts from local IndexedDB vocabulary; it never fabricates source records.
+// Admission Hub-style Mock engine reminder: local vocabulary is the only source; resilient long-session fields never create fake performance evidence.
 import type { VocabularyWord } from "@/data/vocabulary";
 
-export type ExamSettings = { source: "all" | string; questionCount: 10 | 20 | 30 | 50 | 100; timeMinutes: 5 | 10 | 20 | 30 | 60; difficulty: "all" | "easy" | "medium" | "advanced"; negativeMarking: 0 | 0.25 | 0.5 };
+export type ExamSettings = { source: "all" | string; questionCount: 10 | 20 | 30 | 50 | 100 | 200 | 300 | 500; timeMinutes: 5 | 10 | 20 | 30 | 60 | 120 | 180 | 240; difficulty: "all" | "easy" | "medium" | "advanced"; negativeMarking: 0 | 0.25 | 0.5 };
 export type ExamQuestionType = "wordToMeaning" | "meaningToWord" | "synonym" | "antonym";
 export type ExamQuestion = { id: string; vocabularyId: string; type: ExamQuestionType; prompt: string; options: string[]; correctOption: string; word: string; meaningBn: string; synonyms: VocabularyWord["synonyms"]; antonyms: VocabularyWord["antonyms"]; tip?: string };
-export type ExamSession = { examId: string; mode: "mock"; startedAt: string; expiresAt: string; settings: ExamSettings; currentQuestion: number; questions: ExamQuestion[]; answers: Record<string, string>; status: "active" | "submitted" | "expired" | "abandoned" };
+export type ExamSession = { examId: string; mode: "mock"; startedAt: string; expiresAt: string; settings: ExamSettings; currentQuestion: number; questions: ExamQuestion[]; answers: Record<string, string>; flaggedQuestionIds?: string[]; status: "active" | "submitted" | "expired" | "abandoned" };
 export type QuestionResult = ExamQuestion & { selectedOption?: string; status: "correct" | "wrong" | "skipped" };
 export type ExamHistoryRecord = { examId: string; createdAt: string; completedAt: string; mode: "mock"; totalQuestions: number; correct: number; wrong: number; skipped: number; positiveMarks: number; negativeMarks: number; finalScore: number; accuracy: number; durationSeconds: number; settings: ExamSettings; questionResults: QuestionResult[]; status: "submitted" | "expired" };
 
