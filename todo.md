@@ -20,9 +20,9 @@
 
 ## Pasted_content_89 Phase‑2
 
-- [ ] Remaining Phase‑2 specification sections পড়া ও current implementation তুলনা করা।
-- [ ] Structured synonym/antonym schema, parser, validation এবং duplicate policy নির্ধারণ করা।
-- [ ] Parser preview/import UI এবং local IndexedDB engine implement করা।
-- [ ] Real-data dashboard, Bank integration এবং word detail rendering implement করা।
-- [ ] Import, duplicate, persistence, performance এবং locked future tools যাচাই করা।
-- [ ] GitHub Pages-এ Phase‑2 version deploy করা।
+- [x] Remaining Phase‑2 specification sections পড়া ও current implementation তুলনা করা।
+- [x] Structured synonym/antonym schema, parser, validation এবং duplicate policy নির্ধারণ করা।
+- [x] Parser preview/import UI এবং local IndexedDB engine implement করা।
+- [x] Real-data dashboard, Bank integration এবং word detail rendering implement করা।
+- [x] Import, duplicate, persistence, performance এবং locked future tools যাচাই করা।
+- [x] GitHub Pages-এ Phase‑2 version deploy করা।
